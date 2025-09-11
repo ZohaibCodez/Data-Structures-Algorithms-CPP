@@ -1,0 +1,83 @@
+# =========================
+# Build & Compilation Files
+# =========================
+*.out
+*.o
+*.obj
+*.so
+*.a
+*.exe
+*.dll
+*.lib
+*.class
+*.pch
+
+# =========================
+# IDE / Editor Settings
+# =========================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# Visual Studio
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.user
+*.aps
+*.ncb
+*.opendb
+*.suo
+*.cache
+*.pdb
+ipch/
+Debug/
+Release/
+x64/
+x86/
+[Oo]bj/
+[Bb]in/
+
+# =========================
+# OS / System Files
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# =========================
+# Logs / Temporary
+# =========================
+*.log
+*.tmp
+*.swp
+
+# =========================
+# CMake / Make
+# =========================
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# =========================
+# Backup Files
+# =========================
+*~
+*.bak
+*.old
+
+# =========================
+# Ignore Python Virtual Env (if used for tooling)
+# =========================
+.venv/
+venv/
+__pycache__/
