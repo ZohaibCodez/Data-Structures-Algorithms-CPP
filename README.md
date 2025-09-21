@@ -3,8 +3,8 @@
 [![C++](https://img.shields.io/badge/Language-C++-blue.svg?style=flat&logo=c%2B%2B)](https://en.cppreference.com/)
 [![LeetCode](https://img.shields.io/badge/LeetCode-Solutions-orange.svg?style=flat&logo=leetcode)](https://leetcode.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/ZohaibCodez/Data-Structures-Algorithms-CPP-Prep?style=social)](https://github.com/ZohaibCodez/Data-Structures-Algorithms-CPP-Prep)
-[![Forks](https://img.shields.io/github/forks/ZohaibCodez/Data-Structures-Algorithms-CPP-Prep?style=social)](https://github.com/ZohaibCodez/Data-Structures-Algorithms-CPP-Prep/fork)
+[![Stars](https://img.shields.io/github/stars/ZohaibCodez/Data-Structures-Algorithms-CPP?style=social)](https://github.com/ZohaibCodez/Data-Structures-Algorithms-CPP)
+[![Forks](https://img.shields.io/github/forks/ZohaibCodez/Data-Structures-Algorithms-CPP?style=social)](https://github.com/ZohaibCodez/Data-Structures-Algorithms-CPP/fork)
 
 > **Comprehensive Data Structures & Algorithms implementation and problem-solving repository for coding interviews, competitive programming, and technical skill development**
 
@@ -75,7 +75,7 @@ g++ -o solution direct_recursion.cpp
 
 ### 📁 Repository Structure
 ```
-Data-Structures-Algorithms-CPP-Prep/
+Data-Structures-Algorithms-CPP/
 ├── 📁 Recursion/
 │   ├── 📁 Fundamentals/          # Core recursion concepts
 │   ├── 📁 Classic-Problems/      # Traditional recursion problems
@@ -108,8 +108,8 @@ Data-Structures-Algorithms-CPP-Prep/
 
 ## 📊 Repository Statistics
 
-![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ZohaibCodez&repo=Data-Structures-Algorithms-CPP-Prep&layout=compact)
-![Repository Stats](https://github-readme-stats.vercel.app/api/pin/?username=ZohaibCodez&repo=Data-Structures-Algorithms-CPP-Prep)
+![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ZohaibCodez&repo=Data-Structures-Algorithms-CPP&layout=compact)
+![Repository Stats](https://github-readme-stats.vercel.app/api/pin/?username=ZohaibCodez&repo=Data-Structures-Algorithms-CPP)
 
 ## 🌟 Support This Project
 
