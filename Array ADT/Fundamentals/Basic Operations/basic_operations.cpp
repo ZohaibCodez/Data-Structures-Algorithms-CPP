@@ -8,6 +8,14 @@ struct Array
     int length;
 };
 
+void swap(int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
 void Display(struct Array arr)
 {
     int i;
@@ -199,7 +207,7 @@ void Reverse(struct Array *arr)
 void Reverse2(struct Array *arr)
 {
     int i, j;
-    for (i = 0, j = arr->length - 1; i < j; i++,j--)
+    for (i = 0, j = arr->length - 1; i < j; i++, j--)
     {
         int temp = arr->A[i];
         arr->A[i] = arr->A[j];
@@ -207,9 +215,47 @@ void Reverse2(struct Array *arr)
     }
 }
 
+void InsertSort(Array *arr, int x)
+{
+    int i = arr->length - 1;
+    if (arr->length == arr->size)
+        return;
+    while (i >= 0 && arr->A[i] > x)
+    {
+        arr->A[i + 1] = x = arr->A[i];
+        i--;
+    }
+    arr->A[i + 1] = x;
+    arr->length++;
+}
+
+int isSorted(struct Array arr)
+{
+    for (int i = 0; i < arr.length - 1; i++)
+    {
+        if (arr.A[i] > arr.A[i + 1])
+            return 0;
+    }
+    return 1;
+}
+
+void ReArrange(struct Array *arr)
+{
+    int i = 0, j = arr->length - 1;
+    while (i < j)
+    {
+        while (arr->A[i] < 0)
+            i++;
+        while (arr->A[j] > 0)
+            j--;
+        if (i < j)
+            swap(&arr->A[i], &arr->A[j]);
+    }
+}
+
 int main()
 {
-    Array arr = {{1, -1, 3, 7, 5}, 20, 5};
+    Array arr = {{2, -3, 25, 10, -15, -7}, 20, 6};
 
     // Append(&arr, 10);
     // Insert(&arr, -2, 9);
@@ -225,7 +271,10 @@ int main()
     // cout << Sum(arr) << endl;
     // cout << Avg(arr) << endl;
     // Reverse(&arr);
-    Reverse2(&arr);
+    // Reverse2(&arr);
+    // InsertSort(&arr, 4);
+    // cout << isSorted(arr) << endl;
+    ReArrange(&arr);
     Display(arr);
 
     return 0;
