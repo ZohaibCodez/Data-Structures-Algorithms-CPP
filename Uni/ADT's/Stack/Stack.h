@@ -14,7 +14,14 @@ private:
     int top;
 
 public:
-    // Constructor
+    // Default Constructor
+    Stack()
+    {
+        capacity = 100;
+        data = new T[this->capacity];
+        top = -1;
+    }
+    // Parameterized Constructor
     Stack(int size)
     {
         if (size > 0)

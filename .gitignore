@@ -11,6 +11,7 @@
 *.lib
 *.class
 *.pch
+*.gch
 
 # =========================
 # IDE / Editor Settings
@@ -43,6 +44,7 @@ x64/
 x86/
 [Oo]bj/
 [Bb]in/
+.vs/
 
 # =========================
 # OS / System Files
@@ -58,6 +60,7 @@ desktop.ini
 *.log
 *.tmp
 *.swp
+*.stackdump
 
 # =========================
 # CMake / Make
@@ -67,6 +70,7 @@ CMakeCache.txt
 Makefile
 cmake_install.cmake
 compile_commands.json
+*.d
 
 # =========================
 # Backup Files
@@ -74,6 +78,28 @@ compile_commands.json
 *~
 *.bak
 *.old
+
+# =========================
+# Code Coverage / Profiling
+# =========================
+*.gcda
+*.gcno
+*.gcov
+
+# =========================
+# Tooling / Language Servers
+# =========================
+.clangd/
+.ccls-cache/
+.cache/
+
+# =========================
+# Common Build Output Dirs
+# =========================
+build/
+dist/
+out/
+coverage/
 
 # =========================
 # Ignore Python Virtual Env (if used for tooling)
