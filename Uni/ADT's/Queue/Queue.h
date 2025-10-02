@@ -11,52 +11,40 @@ class Queue
 private:
     T *data;
     int capacity;
-    int count;
+    int noOfElement;
     int front;
     int rear;
 
 public:
-    // Default Constructor
-    Queue()
-    {
-        capacity = 100;
-        data = new T[capacity];
-        count = 0;
-        front = 0;
-        rear = -1;
-    }
-
     // Parameterized Constructor
-    Queue(int size)
+    Queue(int c = 10)
     {
-        if (size > 0)
+        if (c > 0)
         {
-            this->capacity = size;
+            this->capacity = c;
+            this->noOfElement = 0;
             data = new T[capacity];
-            count = 0;
             front = 0;
             rear = -1;
         }
         else
         {
-            exit(0);
+            throw invalid_argument("Capacity must be greater than 0");
         }
     }
-
     // Copy Constructor
     Queue(const Queue &other)
     {
         this->capacity = other.capacity;
-        this->count = other.count;
+        this->noOfElement = other.noOfElement;
         this->front = other.front;
         this->rear = other.rear;
         this->data = new T[this->capacity];
-        for (int i = 0; i <= capacity; i++)
+        for (int i = 0; i < noOfElement; i++)
         {
             this->data[i] = other.data[i];
         }
     }
-
     // Assignment Operator
     Queue &operator=(const Queue &other)
     {
@@ -64,61 +52,81 @@ public:
         {
             delete[] data;
             this->capacity = other.capacity;
-            this->count = other.count;
+            this->noOfElement = other.noOfElement;
             this->front = other.front;
             this->rear = other.rear;
             this->data = new T[this->capacity];
-            for (int i = 0; i <= capacity; i++)
+            for (int i = 0; i < noOfElement; i++)
             {
                 this->data[i] = other.data[i];
             }
         }
         return *this;
     }
-
-    void enqueue(T value)
-    {
-        if (this->isFull())
-        {
-            throw overflow_error("Queue Overflow");
-        }
-        this->data[++this->rear] = value;
-        this->count++;
-    }
-
-    T dequeue()
-    {
-        if (this->isEmpty())
-        {
-            throw underflow_error("Queue Underflow");
-        }
-        this->count--;
-        return this->data[this->front++];
-    }
-
+    // Check if full
     bool isFull()
     {
-        return (this->count == this->capacity);
+        return noOfElement == capacity;
     }
-
+    // Check if empty
     bool isEmpty()
     {
-        return this->count == 0;
+        return noOfElement == 0;
+    }
+    // Enqueue
+    void enqueue(T value)
+    {
+        if (!isFull())
+        {
+            rear = (rear + 1) % capacity;
+            data[rear] = value;
+            noOfElement++;
+        }
+        else
+        {
+            throw out_of_range("Queue is full");
+        }
+    }
+    // Dequeue
+    T dequeue()
+    {
+        if (!isEmpty())
+        {
+            T e = data[front];
+            front = (front + 1) % capacity;
+            noOfElement--;
+            return e;
+        }
+        else
+        {
+            throw underflow_error("Queue is empty");
+        }
     }
 
+    // Get current size
     int getSize()
     {
-        return this->count;
+        return noOfElement;
     }
 
+    // Get front element
     T queueFront()
     {
-        return this->data[this->front];
+        if (isEmpty())
+        {
+            throw underflow_error("Queue is empty");
+        }
+        return data[front];
     }
 
+    // Get rear element
     T queueRear()
     {
-        return this->data[this->rear];
+        if (isEmpty())
+        {
+            throw underflow_error("Queue is empty");
+        }
+        return data[rear];
     }
 
     // Destructor
