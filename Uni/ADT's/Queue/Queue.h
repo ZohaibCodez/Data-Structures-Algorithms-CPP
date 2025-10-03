@@ -134,6 +134,14 @@ public:
     {
         delete[] data;
     }
+
+    void display()
+    {
+        cout << "Elements in the circular queue are: ";
+        for (int i = 0; i < noOfElement; i++)
+            cout << data[(i + front) % capacity] << " ";
+        cout << endl;
+    }
 };
 
 #endif
