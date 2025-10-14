@@ -6,7 +6,7 @@
 using namespace std;
 
 template <typename T>
-class LinkedList
+class LSLL
 {
 private:
     Node<T> *head;
@@ -44,10 +44,50 @@ private:
             return rSum(start->next) + start->info;
     }
 
+    T rSearch(Node<T> *traverse, T key)
+    {
+        if (traverse == 0)
+        {
+            return -1;
+        }
+        if (traverse->info == key)
+            return traverse->info;
+        return rSearch(traverse->next, key);
+    }
+
 public:
-    LinkedList()
+    // Constructor
+    LSLL()
     {
         this->head = 0;
+    }
+
+    // Insertion functions
+    void insert(int index, T key)
+    {
+        // checking index is in range
+        if (index < 0 || index > this->countNodes())
+        {
+            return;
+        }
+
+        Node<T> *temp = new Node(key);
+        // if inserting at first position
+        if (index == 0)
+        {
+            temp->next = head;
+            this->head = temp;
+        }
+        else
+        {
+            Node<T> *traverse = head;
+            for (int i = 0; i < index - 1; i++)
+            {
+                traverse = traverse->next;
+            }
+            temp->next = traverse->next;
+            traverse->next = temp;
+        }
     }
 
     void insertAtHead(T v)
@@ -91,6 +131,18 @@ public:
 
     void insertBefore(int k, int v)
     {
+        // if there is no node
+        if (this->head == nullptr)
+            return;
+        // if head node matches key
+        if (this->head->info == k)
+        {
+            // Node<T> *previous = nullptr;
+            Node<T> *t = new Node(v);
+            t->next = head;
+            head = t;
+            return;
+        }
         Node<T> *traverse = head;
         Node<T> *previous = nullptr;
         while (traverse != 0)
@@ -106,35 +158,53 @@ public:
         }
     }
 
+    // Deletion functions
     void removeAtHead()
     {
         if (this->head != 0)
         {
+            Node<T> *temp = head;
             head = head->next;
+            delete temp;
         }
     }
 
     void removeAtTail()
     {
-        Node<T> *traverse = head;
-        while (traverse != nullptr)
+        // if there is no node;
+        if (this->head == 0)
         {
-            if (traverse->next->next == nullptr)
-            {
-                traverse->next = nullptr;
-            }
+            return;
+        }
+        // if there is only one node, one head node
+        if (head->next == nullptr)
+        {
+            delete head;
+            head = nullptr;
+            return;
+        }
+
+        // if there are more than one nodes, then we check from second node
+        Node<T> *traverse = head;
+        while (traverse->next->next != nullptr)
+        {
             traverse = traverse->next;
         }
+        Node<T> *temp = traverse->next;
+        traverse->next = nullptr;
+        delete temp;
     }
 
     void removeAfter(int key)
     {
         Node<T> *traverse = head;
-        while (traverse != 0)
+        while (traverse != nullptr)
         {
             if (traverse->info == key)
             {
+                Node<T> *temp = traverse->next;
                 traverse->next = traverse->next->next;
+                delete temp;
                 return;
             }
             traverse = traverse->next;
@@ -143,6 +213,91 @@ public:
 
     void removeBefore(int key)
     {
+        // no nodes in list
+        if (head == nullptr)
+            return;
+        // if there is only one node. So no node to remove before single node(head node)
+        if (head->next == nullptr)
+            return;
+        // if first node's info matches the key, then we can't remove the node before head node. So simply return ==> no removal:(
+        if (head->info == key)
+            return;
+        // second node maatches the key, removing first node(head node)
+        if (head->next->info == key)
+        {
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+        // general case: Finding the node matching the key and removing the node before it
+        Node<T> *traverse = head;
+        while (traverse->next->next != nullptr)
+        {
+            if (traverse->next->next->info == key)
+            {
+                Node<T> *temp = traverse->next;
+                traverse->next = traverse->next->next;
+                delete temp;
+                return;
+            }
+            traverse = traverse->next;
+        }
+    }
+
+    void remove(T val)
+    {
+        // no nodes ==> empty
+        if (head == nullptr)
+            return;
+        // if first node's info matches
+        if (head->info == val)
+        {
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+        // general case: Finding a node that matches a key and then removing it
+        Node<T> *traverse = head;
+        while (traverse->next != nullptr)
+        {
+            if (traverse->next->info == val)
+            {
+                Node<T> *temp = traverse->next;
+                traverse->next = traverse->next->next;
+                delete temp;
+                return;
+            }
+            traverse = traverse->next;
+        }
+    }
+
+    // Utility functions
+    int search(T key)
+    {
+        Node<T> *traverse = this->head;
+        while (traverse != 0)
+        {
+            if (traverse->info == key)
+                return traverse->info;
+            traverse = traverse->next;
+        }
+        return -1;
+    }
+
+    void update(T key, T val)
+    {
+        Node<T> *traverse = head;
+        while (traverse != nullptr)
+        {
+            if (traverse->info == key)
+            {
+                traverse->info = val;
+                return;
+            }
+            traverse = traverse->next;
+        }
     }
 
     void displayLinkedList()
@@ -166,7 +321,12 @@ public:
         this->recursiveDisplayLinkedListInReverseOrder(head);
     }
 
-    int count()
+    T rSearch(T key)
+    {
+        return this->rSearch(head, key);
+    }
+
+    int countNodes()
     {
         int c = 0;
         Node<T> *temp;
@@ -201,6 +361,19 @@ public:
     int rSum()
     {
         return rSum(head);
+    }
+
+    // Destructor
+    ~LSLL()
+    {
+        Node<T> *current = head;
+        while (current != nullptr)
+        {
+            Node<T> *next = current->next;
+            delete current;
+            current = next;
+        }
+        head = 0;
     }
 };
 
