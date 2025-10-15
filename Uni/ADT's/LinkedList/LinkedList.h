@@ -62,6 +62,25 @@ public:
         this->head = 0;
     }
 
+    void create(T arr[], int n)
+    {
+        if (n <= 0)
+            return;
+
+        head = new Node<T>(arr[0]); // Creating first node
+        head->next = nullptr;
+
+        Node<T> *traverse = head;
+
+        for (int i = 1; i < n; i++)
+        {
+            Node<T> *temp = new Node<T>(arr[i]);
+            temp->next = nullptr;
+            traverse->next = temp;
+            traverse = temp;
+        }
+    }
+
     // Insertion functions
     void insert(int index, T key)
     {
