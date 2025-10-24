@@ -5,18 +5,18 @@ using namespace std;
 
 int main()
 {
-    // CDLinkedList<int> list;
-    // list.insertAtHead(2);
-    // list.insertAtHead(3);
-    // list.insertAtTail(10);
-    // list.insertAtTail(20);
-    // list.insertAtTail(30);
-    // list.insertAtTail(40);
-    // cout << "Deleting tail...\n";
-    // list.removeAtTail();
-    // cout << "After 1 deletion: ";
-    // list.displayList();
-    // cout << endl;
+    CDLinkedList<int> list;
+    list.insertAtHead(2);
+    list.insertAtHead(3);
+    list.insertAtTail(10);
+    list.insertAtTail(20);
+    list.insertAtTail(30);
+    list.insertAtTail(40);
+    cout << "Deleting tail...\n";
+    list.removeAtTail();
+    cout << "After 1 deletion: ";
+    list.displayList();
+    cout << endl;
     // cout << "Deleting tail again...\n";
     // list.removeAtTail();
     // cout << "After 2 deletions: ";
@@ -164,44 +164,44 @@ int main()
     // list.displayList();
     // cout << endl;
 
-    CDLinkedList<int> list;
+    // CDLinkedList<int> list;
 
-    // 1️⃣ Empty list
-    cout << "Case 1: Empty list" << endl;
-    cout << "Count: " << list.countNodes() << endl; // Expected: 0
-    cout << "----------------------" << endl;
+    // // 1️⃣ Empty list
+    // cout << "Case 1: Empty list" << endl;
+    // cout << "Count: " << list.countNodes() << endl; // Expected: 0
+    // cout << "----------------------" << endl;
 
-    // 2️⃣ Single node
-    list.insertAtTail(10);
-    cout << "Case 2: Single node (10)" << endl;
-    list.displayList();                               // Expected: 10
-    cout << "\nCount: " << list.countNodes() << endl; // Expected: 1
-    cout << "----------------------" << endl;
+    // // 2️⃣ Single node
+    // list.insertAtTail(10);
+    // cout << "Case 2: Single node (10)" << endl;
+    // list.displayList();                               // Expected: 10
+    // cout << "\nCount: " << list.countNodes() << endl; // Expected: 1
+    // cout << "----------------------" << endl;
 
-    // 3️⃣ Multiple nodes
-    list.insertAtTail(20);
-    list.insertAtTail(30);
-    list.insertAtTail(40);
-    cout << "Case 3: Multiple nodes (10 20 30 40)" << endl;
-    list.displayList();
-    cout << "\nCount: " << list.countNodes() << endl; // Expected: 4
-    cout << "----------------------" << endl;
+    // // 3️⃣ Multiple nodes
+    // list.insertAtTail(20);
+    // list.insertAtTail(30);
+    // list.insertAtTail(40);
+    // cout << "Case 3: Multiple nodes (10 20 30 40)" << endl;
+    // list.displayList();
+    // cout << "\nCount: " << list.countNodes() << endl; // Expected: 4
+    // cout << "----------------------" << endl;
 
-    // 4️⃣ After deleting one node
-    list.remove(20);
-    cout << "Case 4: After removing one (10 30 40)" << endl;
-    list.displayList();
-    cout << "\nCount: " << list.countNodes() << endl; // Expected: 3
-    cout << "----------------------" << endl;
+    // // 4️⃣ After deleting one node
+    // list.remove(20);
+    // cout << "Case 4: After removing one (10 30 40)" << endl;
+    // list.displayList();
+    // cout << "\nCount: " << list.countNodes() << endl; // Expected: 3
+    // cout << "----------------------" << endl;
 
-    // 5️⃣ After clearing the list
-    list.remove(10);
-    list.remove(30);
-    list.remove(40);
-    cout << "Case 5: After clearing all nodes" << endl;
-    list.displayList();                               // Expected: (empty)
-    cout << "\nCount: " << list.countNodes() << endl; // Expected: 0
-    cout << "----------------------" << endl;
+    // // 5️⃣ After clearing the list
+    // list.remove(10);
+    // list.remove(30);
+    // list.remove(40);
+    // cout << "Case 5: After clearing all nodes" << endl;
+    // list.displayList();                               // Expected: (empty)
+    // cout << "\nCount: " << list.countNodes() << endl; // Expected: 0
+    // cout << "----------------------" << endl;
 
     return 0;
 }

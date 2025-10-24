@@ -201,6 +201,89 @@ public:
         } while (traverse != head);
         return count;
     }
+        // if merged empty -> keep head null; otherwise make circular
+    
+    // void merge(CDLinkedList &list1, CDLinkedList &list2)
+    // {
+    //     // destination must be empty
+    //     while (head)
+    //         removeAtHead();
+
+    //     // quick cases
+    //     if (!list1.head && !list2.head) return;
+    //     if (!list1.head) { head = list2.head; list2.head = nullptr; return; }
+    //     if (!list2.head) { head = list1.head; list1.head = nullptr; return; }
+
+    //     DNode<T> *mergedHead = nullptr;
+    //     DNode<T> *mergedTail = nullptr;
+
+    //     // repeatedly detach the smaller head from list1 or list2 and append to merged list
+    //     while (list1.head && list2.head)
+    //     {
+    //         CDLinkedList<T> *src = (list1.head->data <= list2.head->data) ? &list1 : &list2;
+    //         DNode<T> *node = src->head;
+
+    //         // detach head node from src
+    //         if (node->next == node) // only node
+    //         {
+    //             src->head = nullptr;
+    //         }
+    //         else
+    //         {
+    //             DNode<T> *next = node->next;
+    //             DNode<T> *tail = node->prev;
+    //             tail->next = next;
+    //             next->prev = tail;
+    //             src->head = next;
+    //         }
+
+    //         // append node to merged circular list
+    //         if (!mergedHead)
+    //         {
+    //             node->next = node->prev = node;
+    //             mergedHead = mergedTail = node;
+    //         }
+    //         else
+    //         {
+    //             node->next = mergedHead;
+    //             node->prev = mergedTail;
+    //             mergedTail->next = node;
+    //             mergedHead->prev = node;
+    //             mergedTail = node;
+    //         }
+    //     }
+
+    //     // splice remaining nodes (if any) from list1 or list2
+    //     CDLinkedList<T> *rem = list1.head ? &list1 : (list2.head ? &list2 : nullptr);
+    //     if (!mergedHead)
+    //     {
+    //         // merged empty -> just take remaining list (already circular)
+    //         if (rem) { head = rem->head; rem->head = nullptr; }
+    //         else head = nullptr;
+    //     }
+    //     else if (rem)
+    //     {
+    //         DNode<T> *remHead = rem->head;
+    //         DNode<T> *remTail = remHead->prev;
+
+    //         // link mergedTail <-> remHead and remTail <-> mergedHead
+    //         mergedTail->next = remHead;
+    //         remHead->prev = mergedTail;
+    //         remTail->next = mergedHead;
+    //         mergedHead->prev = remTail;
+
+    //         // new tail is remTail
+    //         mergedTail = remTail;
+    //         head = mergedHead;
+
+    //         rem->head = nullptr;
+    //     }
+    //     else
+    //     {
+    //         // no remaining nodes
+    //         head = mergedHead;
+    //     }
+    // }
 };
 
 #endif
