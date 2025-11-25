@@ -210,7 +210,7 @@ public:
             cout << "Root Node has no parent Node";
         }
 
-        int parentIndex = (i - 1) / 2;
+        int parentIndex = abs((i - 1) / 2);
         return data[parentIndex];
     }
 
