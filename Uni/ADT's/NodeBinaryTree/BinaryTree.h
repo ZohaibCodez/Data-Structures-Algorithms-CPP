@@ -226,12 +226,12 @@ public:
 
     int size()
     {
-        return size(root);
+        return sizeHelper(root);
     }
 
     int countLeaves()
     {
-        return countLeaves(root);
+        return countLeavesHelper(root);
     }
 
     int countInternalNodes()
